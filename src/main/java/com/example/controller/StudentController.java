@@ -20,9 +20,6 @@ public class StudentController
 {
     @Autowired
     StudentService studentDAO;
-    
-    @Autowired
-    CourseService courseDAO;
 
 
     @RequestMapping("/")
@@ -128,20 +125,5 @@ public class StudentController
     {
     	studentDAO.updateStudent(new StudentModel(npm, name, gpa, null));
         return "success-update";
-    }
-    
-    @RequestMapping("/course/view/{id}")
-    public String viewCoursePath (Model model,
-            @PathVariable(value = "id") String id)
-    {
-        CourseModel course = courseDAO.selectCourse(id);
-
-        if (course != null) {
-            model.addAttribute ("course", course);
-            return "view-course";
-        } else {
-        	model.addAttribute ("id", id);
-            return "not-found_course";
-        }
     }
 }
