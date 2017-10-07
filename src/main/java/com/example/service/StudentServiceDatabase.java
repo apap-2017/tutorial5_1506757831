@@ -58,11 +58,4 @@ public class StudentServiceDatabase implements StudentService
 		
 	}
 
-
-	@Override
-	public CourseModel selectCourse(String id) {
-		log.info("select course with id {}", id);
-		return studentMapper.selectCourse(id);
-	}
-
 }
